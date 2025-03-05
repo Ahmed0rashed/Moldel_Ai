@@ -1,19 +1,16 @@
-from fastapi import FastAPI,  File
+from fastapi import FastAPI,File
 from fastapi import  Query 
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-from fastapi import FastAPI,  File
-from fastapi import  Query 
-from fastapi.middleware.cors import CORSMiddleware
 import os
 
 
 os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
 app = FastAPI()
 
-# Add CORS middleware
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -31,8 +28,8 @@ app.add_middleware(
 
 ALLOWED_EXTENSIONS = {'dcm'}
 
-model = joblib.load("naive_bayes_model.pkl")
-tfidf = joblib.load("tfidf_vectorizer.pkl")
+model = joblib.load(r"naive_bayes_model.pkl")
+tfidf = joblib.load(r"tfidf_vectorizer.pkl")
 
 
 class MedicalData(BaseModel):
@@ -53,5 +50,5 @@ def predict_specialty(data: MedicalData):
     prediction = model.predict(X_new)
     
 
-    return {"Predicted Specialty": prediction[0]}
+    return {"Specialty": prediction[0]}
 

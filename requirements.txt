@@ -1,8 +1,6 @@
 fastapi
 uvicorn
-matplotlib
-pydicom
-python-multipart
-requests
-bson
-cloudinary
+joblib
+scikit-learn==1.4.2
+pydantic
+numpy
