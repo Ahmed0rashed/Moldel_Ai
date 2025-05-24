@@ -7,6 +7,8 @@ import joblib
 import os
 
 
+
+
 os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
 app = FastAPI()
 
